@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spotter — Support</title>
+    <style>
+        :root { color-scheme: light dark; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            margin: 0;
+            color: #1c1c1e;
+            background: #f2f2f7;
+        }
+        @media (prefers-color-scheme: dark) {
+            body { color: #f2f2f7; background: #000; }
+            .card { background: #1c1c1e; border-color: #38383a; }
+        }
+        .wrap { max-width: 640px; margin: 0 auto; padding: 56px 20px; }
+        a.back { color: #8e8e93; text-decoration: none; font-size: 0.9rem; }
+        h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin: 16px 0 8px; }
+        h2 { font-size: 1.2rem; margin: 32px 0 8px; }
+        p { margin: 0 0 16px; }
+        .card {
+            background: #fff;
+            border: 1px solid #e5e5ea;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .email { font-size: 1.1rem; font-weight: 600; }
+        a { color: #0a84ff; }
+        .muted { color: #8e8e93; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        footer { margin-top: 48px; color: #8e8e93; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <a class="back" href="index.html">← Spotter</a>
+        <h1>Support</h1>
+        <p>Spotter is built and maintained by an independent developer. If something
+        isn't working, you have an idea, or you just want to say hi, I'd genuinely
+        love to hear from you.</p>
+
+        <div class="card">
+            <p class="muted" style="margin-bottom:4px;">Email me</p>
+            <p class="email"><a href="mailto:jimmyverburgt@gmail.com?subject=Spotter%20Support">jimmyverburgt@gmail.com</a></p>
+            <p class="muted" style="margin-bottom:0;">I read every message and usually reply within a couple of days.</p>
+        </div>
+
+        <h2>Before you write</h2>
+        <p>A few things that solve most issues:</p>
+        <ul>
+            <li><strong>Apple Health not updating?</strong> Open the Health app → Sharing → Apps → Spotter, and make sure the categories you want are enabled.</li>
+            <li><strong>AI features missing?</strong> Workout generation and "Adapt for today" need an iPhone with Apple Intelligence. On other devices they're simply hidden.</li>
+            <li><strong>Watch or widgets out of sync?</strong> Make sure both devices are on the same iCloud account and connected, then reopen the app.</li>
+            <li><strong>Restoring a purchase?</strong> Go to the paywall and tap <em>Restore Purchases</em> while signed in to the App Store account you bought with.</li>
+        </ul>
+
+        <p>When reporting a bug, it helps to include your iPhone model and iOS version,
+        and a quick description of what you expected versus what happened.</p>
+
+        <footer>© 2026 Spotter. Made independently.</footer>
+    </div>
+</body>
+</html>
