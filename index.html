@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <title>Spotter — Private Strength & Gym Workout Tracker for iPhone</title>
 <meta name="description" content="A fast, private strength and gym workout tracker for iPhone and Apple Watch. Log sets one-handed, track your progress, and beat your last lift. No account, no ads.">
 <link rel="canonical" href="https://spotter.jimmyverburgt.com/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="apple-mobile-web-app-title" content="Spotter">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spotter">
@@ -27,39 +29,38 @@
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
-<script defer data-domain="spotter.jimmyverburgt.com" src="https://events.potolo.app/script.js"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Spotter","alternateName":"Spotter: Gym Workout Tracker","operatingSystem":"iOS, watchOS","applicationCategory":"HealthApplication","applicationSubCategory":"Fitness","description":"A fast, private strength and gym workout tracker for iPhone and Apple Watch. Log sets one-handed, track your progress, and beat your last lift. No account, no ads.","url":"https://spotter.jimmyverburgt.com/","installUrl":"https://apps.apple.com/app/id6780562415","downloadUrl":"https://apps.apple.com/app/id6780562415","screenshot":["https://spotter.jimmyverburgt.com/screenshots/session.png","https://spotter.jimmyverburgt.com/screenshots/trends.png","https://spotter.jimmyverburgt.com/screenshots/profile.png"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Jimmy Verburgt"},"publisher":{"@type":"Person","name":"Jimmy Verburgt"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Spotter","alternateName":"Spotter: Gym Workout Tracker","operatingSystem":"iOS, watchOS","applicationCategory":"HealthApplication","applicationSubCategory":"Fitness","description":"A fast, private strength and gym workout tracker for iPhone and Apple Watch. Log sets one-handed, track your progress, and beat your last lift. No account, no ads.","url":"https://spotter.jimmyverburgt.com/","installUrl":"https://apps.apple.com/app/id6780562415","downloadUrl":"https://apps.apple.com/app/id6780562415","screenshot":["https://spotter.jimmyverburgt.com/screenshots/session-dark.png","https://spotter.jimmyverburgt.com/screenshots/trends-dark.png","https://spotter.jimmyverburgt.com/screenshots/profile-dark.png"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Jimmy Verburgt"},"publisher":{"@type":"Person","name":"Jimmy Verburgt"}}</script>
 </head>
 <body>
-<nav><div class="bar"><a class="brand" href="index.html"><img class="mark" src="logo.svg" alt="" width="26" height="24"><span>Spotter</span></a><a class="navbtn" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Get Spotter</a></div></nav>
+<nav><div class="bar"><a class="brand" href="index.html"><img class="mark" src="logo.svg" alt="" width="26" height="24"><span>Spotter</span></a><div class="navactions"><button class="themetoggle" type="button" aria-label="Switch between light and dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button><a class="navbtn" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Get Spotter</a></div></div></nav>
 <header class="hero"><div class="hero-inner">
   <p class="eyebrow">iPhone &amp; Apple Watch</p>
   <h1>See last time.<br>Then <em>beat</em> it.</h1>
   <p class="lead">A fast, private strength tracker. Every set you log stays on your phone.</p>
   <a class="pill" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Download on the App&nbsp;Store</a>
   <p class="pill-note">Free to start &middot; No account &middot; 5&nbsp;MB</p>
-  <div class="hero-shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img src="screenshots/session.png" width="800" height="1739" alt="Spotter logging a set of barbell bench press in a live workout, with last time and plate math" decoding="async" loading="eager" fetchpriority="high"></div></div></div></div>
+  <div class="hero-shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img class="only-dark" src="screenshots/session-dark.png" width="800" height="1739" alt="Spotter logging a set of barbell bench press in a live workout, with last time and plate math" decoding="async" loading="eager" fetchpriority="high"><img class="only-light" src="screenshots/session-light.png" width="800" height="1739" alt="Spotter logging a set of barbell bench press in a live workout, with last time and plate math" decoding="async" loading="lazy"></div></div></div></div>
 </div></header>
 
 <section class="feat reveal">
   <p class="eyebrow">Progress</p>
   <h2>Watch the number <em>climb</em>.</h2>
   <p class="lead">Top set, estimated 1RM, and volume for every lift, charted over time.</p>
-  <div class="shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img src="screenshots/trends.png" width="800" height="1739" alt="Spotter exercise trend chart showing bench press climbing by 7.5 kg over time" decoding="async" loading="lazy"></div></div></div></div>
+  <div class="shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img class="only-dark" src="screenshots/trends-dark.png" width="800" height="1739" alt="Spotter exercise trend chart showing bench press climbing by 7.5 kg over time" decoding="async" loading="lazy"><img class="only-light" src="screenshots/trends-light.png" width="800" height="1739" alt="Spotter exercise trend chart showing bench press climbing by 7.5 kg over time" decoding="async" loading="lazy"></div></div></div></div>
 </section>
 
 <section class="feat reveal">
   <p class="eyebrow">Consistency</p>
   <h2>A whole season, one screen.</h2>
   <p class="lead">Your weekly goal, your streak, every kilo moved, and six months of activity.</p>
-  <div class="shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img src="screenshots/profile.png" width="800" height="1739" alt="Spotter profile with weekly goal ring, streak, total volume and a six-month activity heatmap" decoding="async" loading="lazy"></div></div></div></div>
+  <div class="shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img class="only-dark" src="screenshots/profile-dark.png" width="800" height="1739" alt="Spotter profile with weekly goal ring, streak, total volume and a six-month activity heatmap" decoding="async" loading="lazy"><img class="only-light" src="screenshots/profile-light.png" width="800" height="1739" alt="Spotter profile with weekly goal ring, streak, total volume and a six-month activity heatmap" decoding="async" loading="lazy"></div></div></div></div>
 </section>
 
 <div class="tiles">
   <div class="tile reveal">
     <h3>Built the way you lift</h3>
     <p>Push, Pull, Legs, or your own. Supersets, warm-ups, plate math, and per-set targets.</p>
-    <div class="tshot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img src="screenshots/workouts.png" width="760" height="1652" alt="Spotter workout library with Push, Pull, Legs and Full Body routines" decoding="async" loading="lazy"></div></div></div></div>
+    <div class="tshot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img class="only-dark" src="screenshots/workouts-dark.png" width="760" height="1652" alt="Spotter workout library with Push, Pull, Legs and Full Body routines" decoding="async" loading="lazy"><img class="only-light" src="screenshots/workouts-light.png" width="760" height="1652" alt="Spotter workout library with Push, Pull, Legs and Full Body routines" decoding="async" loading="lazy"></div></div></div></div>
   </div>
   <div class="tile reveal">
     <h3>Log it from your wrist</h3>
@@ -71,8 +72,8 @@
 <section class="tone reveal">
   <p class="eyebrow">Light &amp; dark</p>
   <h2>Looks right in any gym.</h2>
-  <p class="lead">Every screen is built for both, whether you train at dawn or under the lights.</p>
-  <div class="shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img src="screenshots/light.png" width="800" height="1739" alt="Spotter Today screen in light mode showing the next workout and weekly goal" decoding="async" loading="lazy"></div></div></div></div>
+  <p class="lead">Every screen is built for both. Try the toggle up top, or it just follows your phone.</p>
+  <div class="shot"><div class="device"><div class="rim"><div class="scr"><span class="island"></span><img class="only-dark" src="screenshots/today-dark.png" width="800" height="1739" alt="Spotter Today screen showing the next workout and weekly goal" decoding="async" loading="lazy"><img class="only-light" src="screenshots/today-light.png" width="800" height="1739" alt="Spotter Today screen showing the next workout and weekly goal" decoding="async" loading="lazy"></div></div></div></div>
 </section>
 
 <section class="privacy"><div class="privacy-inner reveal">
@@ -145,6 +146,15 @@
   var nav=document.querySelector('nav');
   var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>16);};
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var root=document.documentElement, mq=window.matchMedia('(prefers-color-scheme: light)');
+  var btn=document.querySelector('.themetoggle');
+  if(btn) btn.addEventListener('click',function(){
+    var isLight = root.getAttribute('data-theme')==='light' ||
+      (!root.getAttribute('data-theme') && mq.matches);
+    var next = isLight ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
 })();
 </script>
 </body></html>

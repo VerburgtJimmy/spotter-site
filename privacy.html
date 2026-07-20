@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <title>Privacy Policy — Spotter</title>
 <meta name="description" content="How Spotter keeps your training data private: on-device storage, your own iCloud, no tracking, no ads.">
 <link rel="canonical" href="https://spotter.jimmyverburgt.com/privacy.html">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="apple-mobile-web-app-title" content="Spotter">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spotter">
@@ -27,10 +29,9 @@
 <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
-<script defer data-domain="spotter.jimmyverburgt.com" src="https://events.potolo.app/script.js"></script>
 </head>
 <body>
-<nav><div class="bar"><a class="brand" href="index.html"><img class="mark" src="logo.svg" alt="" width="26" height="24"><span>Spotter</span></a><a class="navbtn" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Get Spotter</a></div></nav>
+<nav><div class="bar"><a class="brand" href="index.html"><img class="mark" src="logo.svg" alt="" width="26" height="24"><span>Spotter</span></a><div class="navactions"><button class="themetoggle" type="button" aria-label="Switch between light and dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button><a class="navbtn" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Get Spotter</a></div></div></nav>
 <main><section class="legal page"><div class="legal-inner">
 <h1>Privacy Policy</h1>
 <p class="date">Last updated 15 June 2026</p>
@@ -60,6 +61,15 @@
   var nav=document.querySelector('nav');
   var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>16);};
   onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var root=document.documentElement, mq=window.matchMedia('(prefers-color-scheme: light)');
+  var btn=document.querySelector('.themetoggle');
+  if(btn) btn.addEventListener('click',function(){
+    var isLight = root.getAttribute('data-theme')==='light' ||
+      (!root.getAttribute('data-theme') && mq.matches);
+    var next = isLight ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
 })();
 </script>
 </body></html>
