@@ -1,0 +1,5 @@
+# Shared workout links. The payload is the rest of the path, so every /w/...
+# URL is served by one page which decodes it client side. Status 200 makes this
+# a rewrite rather than a redirect: Apple requires the AASA file to be reachable
+# without redirects, and a redirecting link would also lose the payload.
+/w/* /w.html 200

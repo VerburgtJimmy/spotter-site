@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<title>A shared workout — Spotter</title>
+<meta name="description" content="Someone shared a workout with you. Open it in Spotter for iPhone.">
+<!-- Every /w/ URL is a one-off payload, so none of them belong in an index. -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-title" content="Spotter">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spotter">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="A shared workout — Spotter">
+<meta property="og:description" content="Someone shared a workout with you. Open it in Spotter for iPhone.">
+<meta property="og:image" content="https://spotter.jimmyverburgt.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Spotter, a private strength tracker for iPhone and Apple Watch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A shared workout — Spotter">
+<meta name="twitter:description" content="Someone shared a workout with you. Open it in Spotter for iPhone.">
+<meta name="twitter:image" content="https://spotter.jimmyverburgt.com/og-image.png">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css?v=7cf2de61">
+<style>
+  .wsheet{border:1px solid var(--line,rgba(128,128,128,.28));border-radius:16px;padding:20px;margin:24px 0}
+  .wsheet h2{margin:0 0 4px;font-size:1.35rem}
+  .wsheet .wmeta{opacity:.7;font-size:.95rem;margin:0 0 14px}
+  .wsheet ul{list-style:none;margin:0;padding:0}
+  .wsheet li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid var(--line,rgba(128,128,128,.18))}
+  .wsheet li span:last-child{opacity:.65;white-space:nowrap}
+  .whide{display:none}
+</style>
+</head>
+<body>
+<nav><div class="bar"><a class="brand" href="index.html"><img class="mark" src="logo.svg" alt="" width="26" height="24"><span>Spotter</span></a><div class="navactions"><button class="themetoggle" type="button" aria-label="Switch between light and dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.5M12 19v2.5M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12H5M19 12h2.5M4.2 19.8l1.8-1.8M18 6l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button><a class="navbtn" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Get Spotter</a></div></div></nav>
+<main><section class="legal page"><div class="legal-inner">
+
+<h1>Someone shared a workout with you</h1>
+<p>Spotter is a private strength tracker for iPhone and Apple Watch. Install it, then open this link again and the workout is added to your library.</p>
+
+<!-- Filled in from the URL when the payload decodes. Hidden otherwise, so a
+     truncated or future-format link still shows the install prompt below
+     rather than an error. -->
+<div class="wsheet whide" id="preview">
+  <h2 id="wname"></h2>
+  <p class="wmeta" id="wmeta"></p>
+  <ul id="wlist"></ul>
+</div>
+
+<p><a class="navbtn" href="https://apps.apple.com/app/id6780562415" target="_blank" rel="noopener">Get Spotter on the App Store</a></p>
+<p class="date">Nothing about this workout is stored on a server. It travels inside the link itself, which is why the address is long.</p>
+<a class="back" href="index.html">&larr; What is Spotter?</a>
+
+</div></section></main>
+<footer><div class="fin"><div class="fcopy"><img class="mark" src="logo.svg" alt="" width="18" height="17"><span>&copy; 2026 Spotter</span></div><div class="flinks"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="mailto:jimmyverburgt@gmail.com">Contact</a></div></div></footer>
+<script>
+(function(){
+  var nav=document.querySelector('nav');
+  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>16);};
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+  var root=document.documentElement, mq=window.matchMedia('(prefers-color-scheme: light)');
+  var btn=document.querySelector('.themetoggle');
+  if(btn) btn.addEventListener('click',function(){
+    var isLight = root.getAttribute('data-theme')==='light' ||
+      (!root.getAttribute('data-theme') && mq.matches);
+    var next = isLight ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+})();
+
+// Workout preview.
+//
+// Link format, which the app must match exactly:
+//   /w/<base64url( deflate-raw( utf8( JSON ) ) )>
+// Raw DEFLATE with no zlib header, because that is what Foundation's
+// `Data.compressed(using: .zlib)` produces on the Swift side.
+//
+// Everything here is best effort. A failure just leaves the install prompt
+// on screen, which is the only thing a visitor without the app can act on
+// anyway, so a decode bug must never become a dead end.
+(function(){
+  'use strict';
+
+  function payloadFromPath(){
+    var m = location.pathname.match(/^\/w\/(.+)$/);
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function base64urlToBytes(s){
+    s = s.replace(/-/g,'+').replace(/_/g,'/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s), out = new Uint8Array(bin.length);
+    for (var i=0;i<bin.length;i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  async function inflate(bytes){
+    if (typeof DecompressionStream === 'undefined') throw new Error('unsupported');
+    var stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+    return new Response(stream).text();
+  }
+
+  function render(workout){
+    var exercises = Array.isArray(workout.exercises) ? workout.exercises : [];
+    document.getElementById('wname').textContent = workout.name || 'Shared workout';
+
+    var bits = [];
+    if (exercises.length) bits.push(exercises.length + (exercises.length === 1 ? ' exercise' : ' exercises'));
+    if (workout.type) bits.push(workout.type);
+    document.getElementById('wmeta').textContent = bits.join(' · ');
+
+    var list = document.getElementById('wlist');
+    exercises.forEach(function(ex){
+      var li = document.createElement('li');
+      var name = document.createElement('span');
+      // textContent, never innerHTML: this string came out of a URL a
+      // stranger controls.
+      name.textContent = ex.name || 'Exercise';
+      var detail = document.createElement('span');
+      detail.textContent = ex.sets ? (ex.sets + ' × ' + (ex.reps || '')).trim() : '';
+      li.appendChild(name); li.appendChild(detail);
+      list.appendChild(li);
+    });
+
+    document.getElementById('preview').classList.remove('whide');
+  }
+
+  var payload = payloadFromPath();
+  if (!payload) return;
+
+  inflate(base64urlToBytes(payload))
+    .then(function(json){ render(JSON.parse(json)); })
+    .catch(function(){ /* Leave the install prompt as the whole page. */ });
+})();
+</script>
+</body></html>

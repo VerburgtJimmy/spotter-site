@@ -1,0 +1,6 @@
+# The AASA file has no extension, so it would otherwise be served as
+# application/octet-stream and iOS would silently refuse to associate the
+# domain. There is no error surfaced for this: shared links just open Safari.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600

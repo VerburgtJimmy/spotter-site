@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["K357UWQN6D.com.hazelint.spotter"],
+        "components": [
+          {
+            "/": "/w/*",
+            "comment": "Shared workout links open Spotter. Everything else on this domain stays a web page."
+          }
+        ]
+      }
+    ]
+  }
+}
