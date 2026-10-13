@@ -5,6 +5,10 @@
         "appIDs": ["K357UWQN6D.com.hazelint.spotter"],
         "components": [
           {
+            "/": "/w",
+            "comment": "Shared workout links. The workout itself is in the URL fragment, which is never sent to this server."
+          },
+          {
             "/": "/w/*",
             "comment": "Shared workout links open Spotter. Everything else on this domain stays a web page."
           }

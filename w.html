@@ -79,7 +79,11 @@
 // Workout preview.
 //
 // Link format, which the app must match exactly:
-//   /w/<base64url( deflate-raw( utf8( JSON ) ) )>
+//   /w#<base64url( deflate-raw( utf8( JSON ) ) )>
+// The payload is in the fragment, not the path, because a browser never
+// sends the fragment to a server: the workout cannot end up in a request
+// log or be fetched by a chat app's link previewer. The older path form
+// (/w/<payload>) is still read, in case one was ever shared.
 // Raw DEFLATE with no zlib header, because that is what Foundation's
 // `Data.compressed(using: .zlib)` produces on the Swift side.
 //
@@ -90,6 +94,7 @@
   'use strict';
 
   function payloadFromPath(){
+    if (location.hash.length > 1) return decodeURIComponent(location.hash.slice(1));
     var m = location.pathname.match(/^\/w\/(.+)$/);
     return m ? decodeURIComponent(m[1]) : null;
   }
